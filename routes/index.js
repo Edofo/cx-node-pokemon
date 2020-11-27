@@ -23,11 +23,14 @@ router.get('/api/pokemons/:id', (req, res) => {
 })
 
 
-router.get('/api/pokemons/info', (req, res) => {
+router.get('/api/:language/pokemons/info', (req, res) => {
   if (!itemList[req.query.id - 1]) {
 
+    const langage = req.params.language;
+    console.log(langage)
+
     const pokename = req.query.name;
-    const pokeverif =  itemList.find(c => c.name.english === pokename);
+    const pokeverif =  itemList.find(c => c.name[langage] === pokename);
 
     if (pokeverif === undefined) {
       
@@ -43,15 +46,15 @@ router.get('/api/pokemons/info', (req, res) => {
 
       }
 
-      res.json(itemList.find(c => c.type == poketype));
+      return res.json(itemList.find(c => c.type == poketype));
 
     };
 
-    res.json(itemList.find(c => c.name.english === pokename));
+    return res.json(itemList.find(c => c.name[langage] === pokename));
 
   }
 
-  res.json(itemList[req.query.id - 1]);
+  return res.json(itemList[req.query.id - 1]);
 })
 
 
