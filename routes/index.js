@@ -27,7 +27,6 @@ router.get('/api/:language/pokemons/info', (req, res) => {
   if (!itemList[req.query.id - 1]) {
 
     const langage = req.params.language;
-    console.log(langage)
 
     const pokename = req.query.name;
     const pokeverif =  itemList.find(c => c.name[langage] === pokename);
@@ -35,13 +34,16 @@ router.get('/api/:language/pokemons/info', (req, res) => {
     if (pokeverif === undefined) {
       
       const poketype = req.query.type;
-      console.log(poketype)
 
-      const pokeverif2 =  itemList.find(c => c.type == poketype);
-      console.log(pokeverif2)
+      const pokeverif =  itemList.find(c => c.type === poketype);
 
-      if (pokeverif2 === undefined) {
+      if (pokeverif === undefined) {
 
+        /*const poketype = req.query.type;
+        console.log(poketype)
+        
+        const pokeverif =  itemList.includes(poketype, type)
+        console.log(pokeverif)*/
         return res.status(400).send("Sorry the specific Pokemon not found");
 
       }
