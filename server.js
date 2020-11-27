@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 
 
-app.use("/", route);;
+app.use("/", route);
 
 app.listen(args[0], function() {
   console.log(
