@@ -1,7 +1,7 @@
 const express = require("express");
+const router = express.Router();
 const fs = require('fs');
 
-const router = express.Router();
 router.use(express.json());
 
 const pokedex = fs.readFileSync('pokedex-20201127.json');
