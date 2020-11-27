@@ -41,7 +41,6 @@ router.delete("/items/:id", (req, res) => {
   }
   itemList.splice(itemList.indexOf(itemList[req.params.id - 1]), 1)
   res.json(itemList);
-  console.log("ok");
 })
 
 
